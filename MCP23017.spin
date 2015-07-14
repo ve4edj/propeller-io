@@ -31,7 +31,9 @@ CON
   OLATB    = $15
 
   I2C_ADDR = %0100_000_0
-  
+
+  N_IOPINS = 16
+
 OBJ
 
 VAR

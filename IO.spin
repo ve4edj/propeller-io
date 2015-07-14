@@ -10,7 +10,6 @@ CON
   #0,LOW,HIGH
   
   N_PROPPINS = 32
-  N_EXPPINS  = 16
 
 OBJ
   IOEXP    : "MCP23017"
@@ -19,7 +18,7 @@ VAR
   
 PUB Init(n_IOexp, I2C_lock, I2C_data_p, I2C_clock_p)
   totalPins := N_PROPPINS
-  totalPins += n_IOexp * N_EXPPINS
+  totalPins += n_IOexp * IOEXP#N_IOPINS
   IOEXP.Init(I2C_lock, I2C_data_p, I2C_clock_p)
   
 PUB read(pin)
@@ -57,10 +56,10 @@ PRI propPin(pin)
   return pin < N_PROPPINS
 
 PRI getExpIdx(pin)
-  return ((pin - N_PROPPINS) / N_EXPPINS)
+  return ((pin - N_PROPPINS) / IOEXP#N_IOPINS)
 
 PRI getExpPin(pin)
-  return ((pin - N_PROPPINS) // N_EXPPINS)
+  return ((pin - N_PROPPINS) // IOEXP#N_IOPINS)
 
 DAT
         numExp          byte 00
